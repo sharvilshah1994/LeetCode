@@ -36,16 +36,20 @@ def DeleteLastNode():
 
 def DeleteNode(n):
     head = Init()
-    current = head
-    while current:
-        if current.next.val == n:
-            current.next = current.next.next
-            break
-        current = current.next
-    while head:
-        print(head.val)
-        head = head.next
+    dummy = ListNode(-1)
+    dummy.next = head
+    next = dummy
 
-# DeleteFirstNode()
-# DeleteLastNode()
-DeleteNode(2)
+    while next != None and next.next != None:
+        if next.next.val == n:
+            next.next = next.next.next
+        else:
+            next = next.next
+    dummy = dummy.next
+    while dummy:
+        print(dummy.val)
+        dummy = dummy.next
+
+DeleteFirstNode()
+DeleteLastNode()
+DeleteNode(1)
