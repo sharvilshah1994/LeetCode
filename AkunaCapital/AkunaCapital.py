@@ -3,26 +3,31 @@ import json
 
 class OrderMarking:
     def __init__(self):
-        self.marking = 0
         self.buy_orders = dict()
         self.sell_orders = dict()
+        self.cancel = list()
+        self.order_mapping = dict()
+        self.position = dict()
 
     def on_event(self, event):
         event = json.loads(event)
         type = event['type']
-
         events = {"NEW": self.new_event,
                   "ORDER_REJECT": self.order_reject,
                   "FILL": self.fill,
-                  "CANCEL_ACK": self.cancel_ack}
-
+                  "CANCEL_ACK": self.cancel_ack,
+                  "CANCEL": self.cancel_event,
+                  "CANCEL_REJECT": self.cancel_reject }
+        if 'symbol' in event:
+            self.order_mapping[event['order_id']] = event['symbol']
+        if self.order_mapping[event['order_id']] not in self.position:
+            self.position[self.order_mapping[event['order_id']]] = 0
         if type in events:
             events[type](event)
-        return self.marking
+        return self.position[self.order_mapping[event['order_id']]]
 
     def new_event(self, event):
         side = event['side']
-
         if side == "BUY":
             self.buy_order(event)
         elif side == "SELL":
@@ -33,12 +38,12 @@ class OrderMarking:
 
     def sell_order(self, event):
         self.sell_orders[event['order_id']] = event['quantity']
-        self.marking -= int(event['quantity'])
+        self.position[event['symbol']] -= event['quantity']
 
     def order_reject(self, event):
         order_id = event['order_id']
         if order_id in self.sell_orders:
-            self.marking += int(self.sell_orders[order_id])
+            self.position[self.order_mapping[event['order_id']]] += self.sell_order[event['order_id']]
             del self.sell_orders[order_id]
         elif order_id in self.buy_orders:
             del self.buy_orders[order_id]
@@ -47,23 +52,37 @@ class OrderMarking:
         order_id = event['order_id']
         filled_quantity = int(event['filled_quantity'])
         remaining_quantity = int(event['remaining_quantity'])
-        if order_id in self.buy_orders:
-            self.buy_orders[order_id] -= filled_quantity
-            if self.buy_orders[order_id] < 0 or remaining_quantity == 0:
+        if remaining_quantity == 0:
+            if order_id in self.buy_orders:
+                self.position[self.order_mapping[order_id]] += self.buy_orders[order_id]
                 del self.buy_orders[order_id]
-            self.marking += filled_quantity
-        elif order_id in self.sell_orders:
-            self.sell_orders[order_id] -= filled_quantity
-            if self.sell_orders[order_id] < 0 or remaining_quantity == 0:
+            elif event['order_id'] in self.sell_order:
                 del self.sell_orders[order_id]
+        else:
+            if event['order_id'] in self.buy_orders:
+                self.position[self.order_mapping[order_id]] += filled_quantity
+                self.buy_orders[order_id] = remaining_quantity
+            elif order_id in self.sell_orders:
+                self.sell_orders[order_id] = remaining_quantity
 
     def cancel_ack(self, event):
         order_id = event['order_id']
-        if order_id in self.sell_orders:
-            self.marking += int(self.sell_orders[order_id])
-            del self.sell_orders[order_id]
-        elif order_id in self.buy_orders:
-            del self.buy_orders[order_id]
+        if order_id in self.cancel:
+            if order_id in self.buy_orders:
+                del self.buy_orders[order_id]
+            else:
+                self.position[self.order_mapping[order_id]] += int(self.sell_orders[order_id])
+                del self.sell_orders[order_id]
+
+    def cancel_event(self, event):
+        order_id = event['order_id']
+        if (order_id in self.buy_orders) or (order_id in self.sell_orders):
+            self.cancel.append(order_id)
+
+    def cancel_reject(self, event):
+        order_id = event['order_id']
+        if order_id in self.cancel:
+            self.cancel.remove(order_id)
 
 
 order = OrderMarking()
