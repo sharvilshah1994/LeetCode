@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e75a03f5-676c-4641-9b63-567c221816fc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/ClimbingStairs.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/CountNumOf1s.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/MatrixMultiplication.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/MaximumDepthBinaryTree.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/MergeTwoSortedLists.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/PascalTriangle.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/ProductArrayExceptSelf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/ReverseInt.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/ReverseLinkedList.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/Sqrt.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/TwoSum.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Apple/ransomNote.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CodeFights/AddTwoHugeNumbers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Google/FunctionEntryExit.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AkunaCapital/AkunaCapital.py" afterPath="$PROJECT_DIR$/AkunaCapital/AkunaCapital.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
-    </list>
+    <list default="true" id="e75a03f5-676c-4641-9b63-567c221816fc" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,16 +92,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -490,8 +461,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32527205" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32527205" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1881259" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
