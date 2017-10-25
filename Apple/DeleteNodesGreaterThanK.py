@@ -14,20 +14,22 @@ def build_linked_list():
 
 
 class Solution(object):
-    def delete_node(self, head, target):
-        dummy = ListNode(-1)
-        dummy.next = head
-        curr = dummy
-        while curr and curr.next:
-            if curr.next.val == target:
-                curr.next = curr.next.next
-            else:
+    def delete_nodes_greater_k(self, head, k):
+        prev = ListNode(None)
+        curr = head
+        while curr:
+            if curr.val > k and not prev:
                 curr = curr.next
-        return dummy.next
+            elif curr.val > k and prev:
+                prev.next = curr.next
+            else:
+                prev = curr
+            curr = curr.next
+        return head
 
 
 inp = build_linked_list()
-ans = Solution().delete_node(inp, 3)
+ans = Solution().delete_nodes_greater_k(inp, 2)
 
 
 def traverse_list(head):

@@ -30,7 +30,6 @@ def DeleteNodesGreaterThanX(n):
     prev = ListNode(None)
     current = head
     while current:
-        printList(current.val, prev)
         if current.val > n and not prev:
             head = head.next
         elif current.val > n and prev:
