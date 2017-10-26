@@ -46,5 +46,5 @@ class Solution(object):
         return []
 
 
-for _ in (Solution().get_path_binary_tree(build_tree(), 1, 5)):
+for _ in (Solution().get_path_binary_tree(build_tree(), 1, 4)):
     print(_.data)
