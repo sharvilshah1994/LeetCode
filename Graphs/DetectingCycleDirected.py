@@ -2,8 +2,7 @@ class Solution(object):
     def __init__(self):
         self.graph = {
                         0: {1, 2},
-                        1: {2},
-                        2: {0}
+                        1: {2}
                       }
 
     def isCyclic(self, p):
@@ -19,11 +18,11 @@ class Solution(object):
         visited[v] = True
         recStack[v] = True
         if v in self.graph:
-            for neighbour in self.graph[v]:
-                if not visited[neighbour]:
-                    if self.isCyclicUtil(neighbour, visited, recStack):
+            for neighbor in self.graph[v]:
+                if not visited[neighbor]:
+                    if self.isCyclicUtil(neighbor, visited, recStack):
                         return True
-                elif recStack[neighbour]:
+                elif recStack[neighbor]:
                     return True
         recStack[v] = False
         return False

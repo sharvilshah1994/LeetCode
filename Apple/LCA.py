@@ -34,5 +34,5 @@ class Solution(object):
 if __name__ == "__main__":
     s = Solution()
     tree = build_tree()
-    ans = s.lowest_common_ancestor(tree, 4, 2)
+    ans = s.lowest_common_ancestor(tree, 2, 4)
     print(ans.data)
