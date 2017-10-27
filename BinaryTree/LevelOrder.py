@@ -6,9 +6,7 @@ class BinaryTreeNode(object):
 
 
 def build_tree():
-    queue = list()
     t = BinaryTreeNode(1)
-    queue.append(t)
     t1 = BinaryTreeNode(2)
     t2 = BinaryTreeNode(3)
     t3 = BinaryTreeNode(4)
@@ -17,21 +15,22 @@ def build_tree():
     t.right = t2
     t1.left = t3
     t1.right = t4
-    return queue
+    return t
 
 
 class Solution(object):
-    def level_order_traversal(self, queue):
-        if not queue:
-            return
-        node = queue[0]
-        print(node.data)
-        queue.pop(0)
-        if node.left:
-            queue.append(node.left)
-        if node.right:
-            queue.append(node.right)
-        self.level_order_traversal(queue)
-
+    def level_order_traversal(self, root):
+        if not root:
+            return []
+        ans = []
+        queue = [root]
+        while queue:
+            node = queue.pop(0)
+            ans.append(node.data)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        print(ans)
 
 Solution().level_order_traversal(build_tree())

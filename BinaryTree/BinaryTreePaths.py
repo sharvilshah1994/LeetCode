@@ -21,30 +21,30 @@ def build_tree():
 class Solution(object):
     def get_path_binary_tree(self, root, start, end):
         if root.data == start:
-            stack_l = [(root.left, [root.left])]
-            stack_r = [(root.right,[root.right])]
-            s_l = self.get_path_with_dfs(stack_l, end)
-            if s_l:
-                return [root] + s_l
-            else:
-                return [root] + self.get_path_with_dfs(stack_r, end)
+            stack = [(root, [root])]
+            s = self.binary_tree_path_helper(stack, end)
+            if s:
+                return s
+            return -1
         else:
             self.get_path_binary_tree(root.left, start, end)
             self.get_path_binary_tree(root.right, start, end)
 
-    def get_path_with_dfs(self, stack, end):
+    def binary_tree_path_helper(self, stack, end):
         while stack:
             (vertex, path) = stack.pop()
             for nxt in path:
                 if nxt.data == end:
                     return path
                 else:
-                    if vertex.left:
-                        stack.append((nxt, path + [vertex.left]))
-                    if vertex.right:
-                        stack.append((nxt, path + [vertex.right]))
-        return []
+                    if nxt.left:
+                        stack.append((nxt.left, path + [nxt.left]))
+                    elif nxt.right:
+                        stack.append((nxt.right, path + [nxt.right]))
 
 
 for _ in (Solution().get_path_binary_tree(build_tree(), 1, 4)):
     print(_.data)
+
+
+# print(Solution().get_path_binary_tree(build_tree(),1, 4))

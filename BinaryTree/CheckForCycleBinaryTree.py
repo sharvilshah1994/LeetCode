@@ -20,24 +20,23 @@ def build_tree():
 
 class Solution(object):
     def check_for_cycle(self, root):
-        visited = set()
-        stack = [root]
-        if self.dfs(visited, stack):
-            return True
+        if root:
+            visited = set()
+            return self.check_helper(root, visited)
         return False
 
-    def dfs(self, visited, stack):
-        while stack:
-            vertex = stack.pop()
-            if vertex not in visited:
-                visited.add(vertex)
-                if vertex.left:
-                    stack.append(vertex.left)
-                if vertex.right:
-                    stack.append(vertex.right)
-            else:
+    def check_helper(self, root, visited):
+        if root not in visited:
+            visited.add(root)
+            if not root.left and not root.right:
                 return False
-        return True
-
+        else:
+            return True
+        if root.left and root.right:
+            return self.check_helper(root.left, visited) or self.check_helper(root.right, visited)
+        elif root.left:
+            return self.check_helper(root.left, visited)
+        elif root.right:
+            return self.check_helper(root.right, visited)
 
 print(Solution().check_for_cycle(build_tree()))
